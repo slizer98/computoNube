@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>mi primer proyecto de vue</title>
+</head>
+<body >
+    <div id="app">
+        <h1 class="text-center mt-4 mb-4 pt-4">{{ textoMayuscula }}</h1>
+        <h1 class="text-center text-info">Erick Manuel Villafuerte Ramirez</h1>
+        <h2 class="bg-dark" 
+         :class="colorCantidad">
+            Mi saldo incial es de: {{ cantidad }}
+        </h2>
+        <!-- esquema viejo -->
+        <!-- <a v-bind:href="enlace">Visita la ug</a> -->
+        <!-- esquema nuevo -->
+        <a :href="enlace">enlace UG</a>
+        <hr>
+        <h2 v-if="estado">CUENTA ACTIVA</h2>
+        <h2 v-else>CUENTA DESACTIVADA</h2>
+        <hr>
+        <h2 v-if="cantidad > 500">Cantidad: {{ cantidad  }}</h2>
+        <h2 v-else-if="cantidad <= 500 && cantidad > 0">
+            cantidad:
+            <span style="color:red">{{ cantidad }}</span>
+        </h2>
+        <h2 v-else>Sin cantidad: {{ cantidad }}</h2>
+        <hr>
+        <h3 class="text-light bg-dark">Los servicios que tenemos son:</h3>
+        <ul>
+            <li v-for="item in servicios">{{ item }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item, index) in servicios" :key="index">{{ index }} - {{ item }}</li>
+        </ul>
+        <hr>
+        <button v-on:click="agregarSaldo">Agregar Saldo</button>
+        <button @click="disminuirSaldo" :disabled="desactivar">quitar Saldo</button>
+        <footer-practica cantidad = "900" fecha="6 de septiembre del 2021"/>
+    </div>
+
+    <script src="./main.js"></script>
+    <script src="./components/Footer.js"></script>
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+</html>
