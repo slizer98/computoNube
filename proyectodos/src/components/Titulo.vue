@@ -13,7 +13,7 @@
 <style scoped>
 .Titulo {
     font-size: 20px;
-    color: blue;
+    color: rgb(2, 2, 56);
     font-weight: 700;
 }
 </style>
